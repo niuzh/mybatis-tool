@@ -1,6 +1,7 @@
 package com.nzh.db;
 
-import com.nzh.model.Schema;
+
+import com.nzh.db.model.Schema;
 
 import java.sql.*;
 

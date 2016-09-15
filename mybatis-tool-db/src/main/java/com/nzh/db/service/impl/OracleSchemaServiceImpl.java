@@ -1,15 +1,10 @@
-package com.nzh.db.impl;
+package com.nzh.db.service.impl;
 
-import com.nzh.db.ISchemaService;
-import com.nzh.model.Column;
-import com.nzh.model.Schema;
-import com.nzh.model.Table;
+import com.nzh.db.model.Column;
+import com.nzh.db.model.Schema;
+import com.nzh.db.model.Table;
+import com.nzh.db.service.ISchemaService;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,6 +33,6 @@ public class OracleSchemaServiceImpl implements ISchemaService {
      * @return
      */
     public List<Column> findColumnByTableName(String tableName) {
-        return null;
+        return new OracleColumnServiceImpl(tableName).findList(schema);
     }
 }

@@ -1,17 +1,19 @@
-package com.nzh.model;
+package com.nzh.win.model;
 
 /**
  * @author zhihuan.niu on 2016/9/13.
  */
-public class Column {
+public class ColumnDto {
     //名称
     private String name;
     //备注
     private String comments;
     //类型
     private String type;
-    //主外健
+    //约束类型
     private String constraintType;
+    //是否可空
+    private boolean isNullAble;
     public String getName() {
         return name;
     }
@@ -42,5 +44,13 @@ public class Column {
 
     public void setConstraintType(String constraintType) {
         this.constraintType = constraintType;
+    }
+
+    public boolean isNullAble() {
+        return isNullAble;
+    }
+
+    public void setIsNullAble(boolean isNullAble) {
+        this.isNullAble = isNullAble;
     }
 }

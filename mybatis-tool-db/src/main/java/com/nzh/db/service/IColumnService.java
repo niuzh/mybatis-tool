@@ -1,8 +1,8 @@
-package com.nzh.db;
+package com.nzh.db.service;
 
-import com.nzh.model.Column;
-import com.nzh.model.Schema;
-import com.nzh.model.Table;
+
+import com.nzh.db.model.Column;
+import com.nzh.db.model.Schema;
 
 import java.util.List;
 

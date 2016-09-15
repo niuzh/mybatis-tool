@@ -1,9 +1,9 @@
-package com.nzh.db.impl;
+package com.nzh.db.service.impl;
 
-import com.nzh.db.ITableService;
+import com.nzh.db.model.Schema;
+import com.nzh.db.model.Table;
+import com.nzh.db.service.ITableService;
 import com.nzh.db.QueryDb;
-import com.nzh.model.Schema;
-import com.nzh.model.Table;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +23,6 @@ public class OracleTableServiceImpl extends QueryDb implements ITableService {
         tableList.clear();
         String sql=selectTable;
         pre = con.prepareStatement(sql);// 实例化预编译语句
-        //pre.setString(1, "刘显安");// 设置参数，前面的1表示参数的索引，而不是表中列名的索引
         result = pre.executeQuery();// 执行查询，注意括号中不需要再加参数
         while (result.next()) {
             String name=result.getString("name");

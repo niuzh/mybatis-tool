@@ -1,4 +1,4 @@
-package com.nzh.model;
+package com.nzh.db.model;
 
 import java.util.List;
 

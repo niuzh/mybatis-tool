@@ -1,11 +1,9 @@
-package com.nzh.db.impl;
+package com.nzh.db.service.impl;
 
-import com.nzh.db.IColumnService;
-import com.nzh.db.ITableService;
 import com.nzh.db.QueryDb;
-import com.nzh.model.Column;
-import com.nzh.model.Schema;
-import com.nzh.model.Table;
+import com.nzh.db.model.Column;
+import com.nzh.db.model.Schema;
+import com.nzh.db.service.IColumnService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,25 +45,30 @@ public class OracleColumnServiceImpl extends QueryDb implements IColumnService {
             String DATA_TYPE=result.getString("DATA_TYPE");
             String NULLABLE=result.getString("NULLABLE");
             String constraint_type=result.getString("constraint_type");
-            System.out.println("name:" + result.getString("name") + " comments:"
-                    + result.getString("comments"));
+            System.out.println("name:" +COLUMN_NAME + " comments:" + COMMENTS);
             Column column=new Column();
             column.setName(COLUMN_NAME);
             column.setType(DATA_TYPE);
             column.setComments(COMMENTS);
             column.setConstraintType(constraint_type);
+            column.setIsNullAble(NULLABLE.equals("Y"));
+            addColumn(column);
+        }
+    }
+
+    private void addColumn(Column column){
+        if(column.getConstraintType()!=null&&column.getConstraintType().equals("P")){
+            //为主键
+            for (Column column1:columnList){
+                if(column.getName().equals(column1.getName())){
+                    column1.setConstraintType(column.getConstraintType());
+                }
+            }
+        }else {
             columnList.add(column);
         }
     }
-    private void addColumn(Column column){
-        for (Column column1:columnList){
-            if(column.getName().equals(column1.getName())){
-                if(column1.getConstraintType()!=null){
-                    //todo
-                }
-            }
-        }
-    }
+
     public List<Column> findList(Schema schema) {
         this.query(schema);
         return columnList;

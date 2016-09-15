@@ -1,9 +1,10 @@
-package com.nzh;
+package com.nzh.win.ui;
 
-import com.nzh.db.ISchemaService;
-import com.nzh.db.impl.OracleSchemaServiceImpl;
-import com.nzh.model.Schema;
-import com.nzh.model.Table;
+import com.nzh.db.model.Column;
+import com.nzh.db.model.Schema;
+import com.nzh.db.model.Table;
+import com.nzh.db.service.ISchemaService;
+import com.nzh.db.service.impl.OracleSchemaServiceImpl;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
